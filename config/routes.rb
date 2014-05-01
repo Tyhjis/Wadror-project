@@ -5,6 +5,12 @@ Sporter::Application.routes.draw do
 
   get 'signup', to: 'users#new'
 
+  resources :sessions, only: [:new, :create]
+
+  get 'signin', to: 'sessions#new'
+  get 'signout', to: 'sessions#destroy'
+
+  root 'exercises#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

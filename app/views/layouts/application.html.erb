@@ -7,7 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="navibar">
+  <%= link_to 'exercises', exercises_path %>
+  <%= link_to 'users', users_path %>
+  <b> | </b>
+  <% if not current_user.nil? %>
+  <%= current_user.username %>
+  <%= link_to 'sign out', signout_path %>
+  <% else %>
+  <%= link_to 'signin', signin_path %>
+  <% end %>
+</div>
 <%= yield %>
 
 </body>
