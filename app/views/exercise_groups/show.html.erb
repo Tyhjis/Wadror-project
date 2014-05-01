@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @exercise_group.name %>
+</p>
+<p>
+  <strong><%= pluralize(@exercise_group.users.count, 'user') %></strong>
+<table border="1">
+  <thead>
+  <tr>
+    <th>Username</th>
+    <th>Time spent exercising</th>
+    <th>How many exercises</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @exercise_group.users.each do |user| %>
+      <tr>
+        <td><%= link_to user.username, user %></td>
+        <td><%= user.total_hours %></td>
+        <td><%= user.exercises.count %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+</p>
+<p>
+  <strong>Most hours exercised by a user for the past 4 weeks:</strong><br>
+  <%= pluralize(@exercise_group.top, 'hour') %>
+</p>
+
+<%= link_to 'Edit', edit_exercise_group_path(@exercise_group) %> |
+<%= link_to 'Back', exercise_groups_path %>

@@ -7,15 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<h1>Sporter</h1>
 <div class="navibar">
   <%= link_to 'exercises', exercises_path %>
   <%= link_to 'users', users_path %>
   <b> | </b>
   <% if not current_user.nil? %>
-  <%= current_user.username %>
-  <%= link_to 'sign out', signout_path %>
+  <%= link_to current_user.username, current_user %>
+  <%= link_to 'Book an exercise', new_exercise_path %>
+  <%= link_to 'Groups', exercise_groups_path %>
+  <%= link_to 'Sign out', signout_path %>
   <% else %>
-  <%= link_to 'signin', signin_path %>
+  <%= link_to 'Signin', signin_path %>
+  <%= link_to 'Signup', signup_path %>
   <% end %>
 </div>
 <%= yield %>

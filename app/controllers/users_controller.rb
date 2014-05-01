@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @exercises = @user.exercises
+    @groups = @user.groups
   end
 
   # GET /users/new

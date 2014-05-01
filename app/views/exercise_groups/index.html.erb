@@ -1,0 +1,25 @@
+<h1>Listing exercise_groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exercise_groups.each do |exercise_group| %>
+      <tr>
+        <td><%= link_to exercise_group.name, exercise_group %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Join a Group', new_membership_path %>
+<%= link_to 'Create a new Exercise group', new_exercise_group_path %>

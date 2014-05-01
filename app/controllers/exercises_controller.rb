@@ -24,17 +24,14 @@ class ExercisesController < ApplicationController
   # POST /exercises
   # POST /exercises.json
   def create
-    @exercise = Exercise.new(exercise_params)
-
-    respond_to do |format|
-      if @exercise.save
-        format.html { redirect_to @exercise, notice: 'Exercise was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @exercise }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @exercise.errors, status: :unprocessable_entity }
-      end
+    exercise = Exercise.new exercise_params
+    if exercise.save
+      current_user.exercises << exercise
+      redirect_to user_path(current_user.id)
+    else
+      redirect_to new_exercise_path
     end
+
   end
 
   # PATCH/PUT /exercises/1
@@ -54,11 +51,9 @@ class ExercisesController < ApplicationController
   # DELETE /exercises/1
   # DELETE /exercises/1.json
   def destroy
-    @exercise.destroy
-    respond_to do |format|
-      format.html { redirect_to exercises_url }
-      format.json { head :no_content }
-    end
+    exercise = Exercise.find params[:id]
+    exercise.delete if current_user == exercise.user
+    redirect_to :back
   end
 
   private

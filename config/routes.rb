@@ -1,4 +1,9 @@
 Sporter::Application.routes.draw do
+
+  resources :memberships
+
+  resources :exercise_groups
+
   resources :users
 
   resources :exercises

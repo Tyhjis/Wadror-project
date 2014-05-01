@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324122617) do
+ActiveRecord::Schema.define(version: 20140501183612) do
+
+  create_table "exercise_groups", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "exercises", force: true do |t|
     t.string   "exercise_type"
@@ -19,6 +25,14 @@ ActiveRecord::Schema.define(version: 20140324122617) do
     t.integer  "month"
     t.integer  "year"
     t.float    "time_used"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "memberships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "exercise_group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
