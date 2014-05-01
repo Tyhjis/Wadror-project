@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exercise_type: MyString
+  day: 1
+  month: 1
+  year: 1
+  time_used: 1.5
+
+two:
+  exercise_type: MyString
+  day: 1
+  month: 1
+  year: 1
+  time_used: 1.5
